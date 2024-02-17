@@ -1,11 +1,14 @@
 from django.shortcuts import render
 
-# Create your views here.
-# views.py
-
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Agriculteur, InformationAgricole, Prediction
  
+
+
+def home(request):
+
+    return render(request, 'AgriApp\home.html')
+
 def agriculteurs_list(request):
     agriculteurs = Agriculteur.objects.all()
     return render(request, 'agriculteurs_list.html', {'agriculteurs': agriculteurs})
