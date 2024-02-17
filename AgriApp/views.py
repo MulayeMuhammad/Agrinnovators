@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Agriculteur, InformationAgricole, Prediction
- 
+from .forms import * 
 
 
 def home(request):
