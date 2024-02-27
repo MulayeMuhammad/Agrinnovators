@@ -1,1 +1,57 @@
-<h1>Hello, world<h1>
+<!-- ansade_app/templates/ansade_app/home.html -->
+{% block content %}
+<div style="background-color: #2ecc71; padding: 50px; text-align: center">
+
+ 
+
+  <h1>Bienvenue sur AgriApp</h1>
+  <p class="h6">
+    Agri app est une plateforme pour la gestion efficace des donnees et le calcul de
+    l'INPC (Indice National des Prix à la Consommation) . Notre mission est de
+    simplifier l'analyse des données et les processus de prise de décision pour
+    l' Ansade.
+  </p>
+  <h2 class="pb-3">Nos Fonctionnalités</h2>
+  <div class="d-flex justify-content-center">
+    <div class="card text-center" style="width: 18rem">
+      <div class="card-body">
+
+        <h5 class="card-title pb-3">Calculs avancés </h5>
+        <a href="#" class="btn btn-success"
+          >Calculer INPC</a
+        >
+      </div>
+    </div>
+    <div class="card text-center ms-3" style="width: 18rem">
+      <div class="card-body">
+ 
+
+        <h5 class="card-title pb-3">Gestion  des données</h5>
+        <a href="#" class="btn btn-success"
+          >liste des produits</a
+        >
+      </div>
+    </div>
+    <div class="card text-center ms-3" style="width: 18rem">
+      <div class="card-body">
+        
+
+        <h5 class="card-title pb-3">visualisation de l'evolution  des prix</h5>
+        <a href="#" class="btn btn-success"
+          >Visualiser</a
+        >
+      </div>
+    </div>
+    <div class="card text-center ms-3" style="width: 18rem">
+      <div class="card-body">
+        
+        <h5 class="card-title pb-3">prediction du prix </h5>
+        <a href="#" class="btn btn-success"
+          >Prediction</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
