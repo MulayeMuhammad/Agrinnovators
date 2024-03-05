@@ -6,8 +6,11 @@ from .models import InformationAgricole, Prediction
 class InformationAgricoleForm(forms.ModelForm):
     class Meta:
         model = InformationAgricole
-        fields = '__all__'
+        exclude = ['agriculteur', 'rendement']
 class PredictionForm(forms.ModelForm):
     class Meta:
         model = Prediction
         fields =  '__all__'
+
+
+

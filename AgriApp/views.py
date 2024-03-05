@@ -5,9 +5,18 @@ from .models import Agriculteur, InformationAgricole, Prediction
 from .forms import * 
 
 
-def home(request):
+from django.shortcuts import render
+from .forms import InformationAgricoleForm
 
-    return render(request, 'AgriApp\home.html')
+def home(request):
+    if request.method == 'POST':
+        form = InformationAgricoleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Rediriger l'utilisateur vers une autre page ou afficher un message de succès
+    else:
+        form = InformationAgricoleForm()
+    return render(request, 'home.html', {'form': form})
 
 def agriculteurs_list(request):
     agriculteurs = Agriculteur.objects.all()
