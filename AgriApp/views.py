@@ -38,8 +38,8 @@ def information_create(request, agriculteur_id):
             information.save()
             return redirect('agriculteur_detail', agriculteur_id=agriculteur.id)
     else:
-        initial_data = {'nom': agriculteur.nom, 'email': agriculteur.email}
-        form = InformationAgricoleForm(initial=initial_data)
+        # Exclure le champ rendement du formulaire
+        form = InformationAgricoleForm(exclude=['rendement'])
     return render(request, 'information_create.html', {'form': form})
 
 def prediction_create(request, agriculteur_id):
