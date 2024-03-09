@@ -38,7 +38,8 @@ def information_create(request, agriculteur_id):
             information.save()
             return redirect('agriculteur_detail', agriculteur_id=agriculteur.id)
     else:
-        form = InformationAgricoleForm()
+        initial_data = {'nom': agriculteur.nom, 'email': agriculteur.email}
+        form = InformationAgricoleForm(initial=initial_data)
     return render(request, 'information_create.html', {'form': form})
 
 def prediction_create(request, agriculteur_id):
@@ -51,5 +52,6 @@ def prediction_create(request, agriculteur_id):
             prediction.save()
             return redirect('agriculteur_detail', agriculteur_id=agriculteur.id)
     else:
-        form = PredictionForm()
+        initial_data = {'nom': agriculteur.nom, 'email': agriculteur.email}
+        form = PredictionForm(initial=initial_data)
     return render(request, 'prediction_create.html', {'form': form})
