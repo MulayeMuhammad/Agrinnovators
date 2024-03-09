@@ -8,6 +8,9 @@ from .forms import *
 from django.shortcuts import render
 from .forms import InformationAgricoleForm
 
+from joblib import load
+model = load('./savedmodels/model.joblib')
+
 def home(request):
     if request.method == 'POST':
         form = InformationAgricoleForm(request.POST)
