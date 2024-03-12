@@ -45,6 +45,7 @@
             </h1>
         </div>
 
+<<<<<<< HEAD
         <p class="intro-text">
             La plateforme "Agrinnovators" a pour mission de moderniser l'agriculture mauritanienne en fournissant aux agriculteurs des outils avancés pour la gestion des informations agricoles, des prédictions de rendements et une prise de décision éclairée.
         </p>
@@ -56,3 +57,120 @@
         </p>
     </div>
 {% endblock %}
+=======
+<!-- Barre de navigation -->
+<div class="navbar">
+    <a href="#home">Accueil</a>
+    <a href="#pricing">Visualisation des prix</a>
+    <a href="#simulations">Simulations</a>
+    <a href="#chatbot">Chatbot</a>
+    <a href="#about">A propos</a>
+</div>
+
+<!-- Contenu principal -->
+<div class="content">
+    <h1>Bienvenue sur Agrinnovators</h1>
+    <h2>Formulaire pour insérer les données agricoles :</h2>
+    <form method="post" onsubmit="return validerFormulaire()">
+        {% csrf_token %}
+        <label for="id_nom">Nom :</label>
+        <input type="text" id="id_nom" name="nom">
+        <br><br>
+        <label for="id_email">Email :</label>
+        <input type="email" id="id_email" name="email">
+        <br><br>
+
+        <label for="id_region">Région :</label>
+        <select id="id_region" name="region">
+            <option value="Hodh Chargui">Hodh Chargui</option>
+            <option value="Hodh El Gharbi">Hodh El Gharbi</option>
+            <option value="Assaba">Assaba</option>
+            <option value="Gorgol">Gorgol</option>
+            <option value="Brakna">Brakna</option>
+            <option value="Trarza">Trarza</option>
+            <option value="Adrar">Adrar</option>
+            <option value="Dakhlet Nouadhibou">Dakhlet Nouadhibou</option>
+            <option value="Tagant">Tagant</option>
+            <option value="Guidimakha">Guidimakha</option>
+            <option value="Tiris Zemmour">Tiris Zemmour</option>
+            <option value="Inchiri">Inchiri</option>
+            <option value="Nouakchott">Nouakchott</option>
+        </select>
+        <br><br>
+        <label for="id_temperature">Température moyenne :</label>
+        <input type="number" id="id_temperature" name="temperature">
+        <br><br>
+        <label for="id_humidite">Humidité :</label>
+        <input type="number" id="id_humidite" name="humidite">
+        <br><br>
+        <label for="id_superficie">Superficie en metre carre:</label>
+        <input type="number" id="id_superficie" name="superficie">
+        <br><br>
+        <label for="id_capital">Capital :</label>
+        <input type="number" id="id_capital" name="capital">
+        <br><br>
+        <label for="id_rendement">nombre de travailleurs:</label>
+        <input type="number" id="id_travailleurs" name="travailleurs">
+        <br><br>
+        <label for="id_produit">Produit principal :</label>
+        <select id="id_produit" name="produit">
+            <option value="Blé">Blé</option>
+            <option value="Maïs">Maïs</option>
+            <option value="Sorgho">Sorgho</option>
+            <option value="Riz">Riz</option>
+            <option value="Millet">Millet</option>
+            <option value="Orge">Orge</option>
+            <option value="Coton">Coton</option>
+            <option value="Arachide">Arachide</option>
+            <option value="Tomate">Tomate</option>
+            <option value="Pastèque">Pastèque</option>
+            <option value="Pomme de terre">Pomme de terre</option>
+            <option value="Oignon">Oignon</option>
+            <option value="Ail">Ail</option>
+            <option value="Fruit de palme">Fruit de palme</option>
+            <option value="Patate douce">Patate douce</option>
+        </select>
+        <br><br>
+        <label for="id_prix_produit">Prix du produit :</label>
+        <input type="number" id="id_prix_produit" name="prix_produit">
+        <br><br>
+        <button type="submit">Soumettre</button>
+    </form>
+    
+    
+</div>
+
+<script>
+    function validerFormulaire() {
+        var region = document.getElementById("id_region").value;
+        var temperature = document.getElementById("id_temperature").value;
+        var autresChamps = document.querySelectorAll('input[type="number"]');
+        var valide = true;
+
+        // Vérifier que la région est sélectionnée
+        if (region === "") {
+            valide = false;
+            alert("Veuillez sélectionner une région.");
+        }
+
+        // Vérifier que la température est saisie
+        if (temperature === "") {
+            valide = false;
+            alert("Veuillez saisir la température.");
+        }
+
+        // Vérifier que les autres champs sont positifs
+        autresChamps.forEach(function(champ) {
+            if (champ.value < 0) {
+                valide = false;
+                alert("Tous les champs sauf la température doivent être positifs.");
+            }
+        });
+
+        return valide;
+    }
+</script>
+
+</body>
+</html>
+>>>>>>> b57f552f04a1da2a3552961cf3c783ad64c0fd4d
