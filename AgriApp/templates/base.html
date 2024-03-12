@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Accueil{% endblock %}</title>
+    <style>
+        /* Reset CSS */
+        @import url('https://unpkg.com/reset-css@5.1.5/reset.min.css');
+
+        /* Style de la barre de navigation */
+        .navbar {
+            background-color: #333; /* Couleur de fond de la navbar */
+            overflow: hidden;
+        }
+
+        /* Liens de la barre de navigation */
+        .navbar a {
+            float: left; /* Flotte les éléments à gauche */
+            display: block; /* Affiche les liens en bloc */
+            color: white; /* Couleur du texte */
+            text-align: center; /* Alignement du texte */
+            padding: 14px 20px; /* Espacement du texte */
+            text-decoration: none; /* Pas de soulignement */
+        }
+
+        /* Changement de couleur au survol */
+        .navbar a:hover {
+            background-color: #ddd; /* Couleur de fond au survol */
+            color: black; /* Couleur du texte au survol */
+        }
+
+        /* Contenu principal */
+        .content {
+            margin-top: 50px; /* Marge en haut pour éviter la superposition avec la navbar */
+            color: white; /* Texte blanc */
+            font-family: Arial, sans-serif; /* Police de caractères */
+            padding: 20px; /* Espacement du contenu */
+            text-align: center; /* Alignement du texte */
+            height: 100vh; /* Ajuste la hauteur du contenu à 100% de la hauteur de la fenêtre */
+        }
+
+        /* Formulaire */
+        form {
+            width: 50%; /* Largeur du formulaire */
+            margin: 0 auto; /* Centre le formulaire horizontalement */
+            padding: 20px; /* Espacement du formulaire */
+            background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+            border-radius: 10px; /* Coins arrondis */
+        }
+
+        /* Bouton Soumettre */
+        button[type="submit"] {
+            display: block; /* Affiche le bouton en bloc */
+            margin: 0 auto; /* Centre le bouton horizontalement */
+            margin-top: 10px; /* Marge en haut */
+        }
+
+        /* Image de fond */
+        body {
+            background-image: url('{% static "img/1.jpg" %}'); /* Utilisation de static pour le chemin statique */
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Barre de navigation -->
+<div class="navbar">
+    <a href="#home">Accueil</a>
+    <a href="#pricing">Visualisation des prix</a>
+    <a href="#simulations">Simulations</a>
+    <a href="#chatbot">Chatbot</a>
+    <a href="#about">A propos</a>
+</div>
+
+<!-- Contenu principal -->
+<div class="content">
+    {% block content %}
+    
+    {% endblock %}
+</div>
+
+</body>
+</html>

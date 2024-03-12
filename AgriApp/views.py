@@ -58,3 +58,16 @@ def prediction_create(request, agriculteur_id):
         initial_data = {'nom': agriculteur.nom, 'email': agriculteur.email}
         form = PredictionForm(initial=initial_data)
     return render(request, 'prediction_create.html', {'form': form})
+
+
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def inserer_donnees(request):
+    if request.method == 'POST':
+        # Traitement des données envoyées via le formulaire
+        # Ajoutez ici le code pour enregistrer les données dans la base de données
+        return HttpResponse("Données insérées avec succès !")
+    else:
+        return render(request, 'agriapp/agriculturedonnes.html')

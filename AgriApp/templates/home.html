@@ -1,160 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
-    <style>
-        /* Style de la barre de navigation */
-        .navbar {
-            background-color: #333; /* Couleur de fond de la navbar */
-            overflow: hidden;
-        }
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Bienvenue sur Agrinnovators{% endblock %}
 
-        /* Liens de la barre de navigation */
-        .navbar a {
-            float: left; /* Flotte les éléments à gauche */
-            display: block; /* Affiche les liens en bloc */
-            color: white; /* Couleur du texte */
-            text-align: center; /* Alignement du texte */
-            padding: 14px 20px; /* Espacement du texte */
-            text-decoration: none; /* Pas de soulignement */
-        }
+{% block content %}
+<style>.intro-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify;
+    padding: 20px;
+    background-color: rgba(190, 200, 190, 0.929);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-        /* Changement de couleur au survol */
-        .navbar a:hover {
-            background-color: #ddd; /* Couleur de fond au survol */
-            color: black; /* Couleur du texte au survol */
-        }
+.hero-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        /* Contenu principal */
-        .content {
-            margin-top: 50px; /* Marge en haut pour éviter la superposition avec la navbar */
-            background-color: green; /* Fond vert */
-            color: white; /* Texte blanc */
-            font-family: Arial, sans-serif; /* Police de caractères */
-            padding: 20px; /* Espacement du contenu */
-            text-align: center; /* Alignement du texte */
-        }
+.hero-title {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    color: #08611c;
+    font-weight: 700;
+    font-variant: small-caps;
+    font-size: 2.5rem;
+}
 
-        /* Formulaire */
-        form {
-            width: 50%; /* Largeur du formulaire */
-            margin: 0 auto; /* Centre le formulaire horizontalement */
-            padding: 20px; /* Espacement du formulaire */
-            background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
-            border-radius: 10px; /* Coins arrondis */
-        }
+.hero-title span {
+    color: #eee5e5ee;
+}
 
-        /* Bouton Soumettre */
-        button[type="submit"] {
-            display: block; /* Affiche le bouton en bloc */
-            margin: 0 auto; /* Centre le bouton horizontalement */
-            margin-top: 10px; /* Marge en haut */
-        }
-    </style>
-</head>
-<body>
+.intro-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #0f0e0edd;
+}
+</style>
+    <div class="intro-container">
+        <div class="hero-container">
+            <h1 class="hero-title">
+                Bienvenue
+                <span>Sur</span>
+                Agrinnovators
+            </h1>
+        </div>
 
-<!-- Barre de navigation -->
-<div class="navbar">
-    <a href="#home">Accueil</a>
-    <a href="#pricing">Visualisation des prix</a>
-    <a href="#simulations">Simulations</a>
-    <a href="#chatbot">Chatbot</a>
-    <a href="#about">A propos</a>
-</div>
-
-<!-- Contenu principal -->
-<div class="content">
-    <h1>Bienvenue sur Agrinnovators</h1>
-    <h2>Formulaire pour insérer les données agricoles :</h2>
-    <form method="post" onsubmit="return validerFormulaire()">
-        {% csrf_token %}
-        <label for="id_nom">Nom :</label>
-        <input type="text" id="id_nom" name="nom">
-        <br><br>
-        <label for="id_email">Email :</label>
-        <input type="email" id="id_email" name="email">
-        <br><br>
-
-        <label for="id_region">Région :</label>
-        <select id="id_region" name="region">
-            <option value="Hodh Chargui">Hodh Chargui</option>
-            <option value="Hodh El Gharbi">Hodh El Gharbi</option>
-            <option value="Assaba">Assaba</option>
-            <option value="Gorgol">Gorgol</option>
-            <option value="Brakna">Brakna</option>
-            <option value="Trarza">Trarza</option>
-            <option value="Adrar">Adrar</option>
-            <option value="Dakhlet Nouadhibou">Dakhlet Nouadhibou</option>
-            <option value="Tagant">Tagant</option>
-            <option value="Guidimakha">Guidimakha</option>
-            <option value="Tiris Zemmour">Tiris Zemmour</option>
-            <option value="Inchiri">Inchiri</option>
-            <option value="Nouakchott">Nouakchott</option>
-        </select>
-        <br><br>
-        <label for="id_temperature">Température :</label>
-        <input type="number" id="id_temperature" name="temperature">
-        <br><br>
-        <label for="id_humidite">Humidité :</label>
-        <input type="number" id="id_humidite" name="humidite">
-        <br><br>
-        <label for="id_superficie">Superficie :</label>
-        <input type="number" id="id_superficie" name="superficie">
-        <br><br>
-        <label for="id_capital">Capital :</label>
-        <input type="number" id="id_capital" name="capital">
-        <br><br>
-        <label for="id_qualite_sol">Qualité du sol :</label>
-        <input type="text" id="id_qualite_sol" name="qualite_sol">
-        <br><br>
-        <label for="id_rendement">Rendement :</label>
-        <input type="number" id="id_rendement" name="rendement">
-        <br><br>
-        <label for="id_produit">Produit :</label>
-        <input type="text" id="id_produit" name="produit">
-        <br><br>
-        <label for="id_prix_produit">Prix du produit :</label>
-        <input type="number" id="id_prix_produit" name="prix_produit">
-        <br><br>
-        <button type="submit">Soumettre</button>
-    </form>
-    
-    
-</div>
-
-<script>
-    function validerFormulaire() {
-        var region = document.getElementById("id_region").value;
-        var temperature = document.getElementById("id_temperature").value;
-        var autresChamps = document.querySelectorAll('input[type="number"]');
-        var valide = true;
-
-        // Vérifier que la région est sélectionnée
-        if (region === "") {
-            valide = false;
-            alert("Veuillez sélectionner une région.");
-        }
-
-        // Vérifier que la température est saisie
-        if (temperature === "") {
-            valide = false;
-            alert("Veuillez saisir la température.");
-        }
-
-        // Vérifier que les autres champs sont positifs
-        autresChamps.forEach(function(champ) {
-            if (champ.value < 0) {
-                valide = false;
-                alert("Tous les champs sauf la température doivent être positifs.");
-            }
-        });
-
-        return valide;
-    }
-</script>
-
-</body>
-</html>
+        <p class="intro-text">
+            La plateforme "Agrinnovators" a pour mission de moderniser l'agriculture mauritanienne en fournissant aux agriculteurs des outils avancés pour la gestion des informations agricoles, des prédictions de rendements et une prise de décision éclairée.
+        </p>
+        <p class="intro-text">
+            Explorez nos fonctionnalités pour obtenir des résultats et des idées avant de concrétiser vos projets agricoles. Notre objectif est de faciliter la gestion de vos activités agricoles et de vous accompagner tout au long du processus.
+        </p>
+        <p>
+            Pour insérer vos données, veuillez <a href="{% url 'inserer_donnees' %}" class="insert-data-button">cliquer ici</a>.
+        </p>
+    </div>
+{% endblock %}

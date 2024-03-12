@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Insertion de Données Agricoles{% endblock %}
+
+{% block content %}
+<style>
+    .insert-data-container {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px;
+        background-color: rgba(190, 200, 190, 0.929);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-title {
+        font-family: 'Arial', 'Helvetica', sans-serif;
+        color: #08611c;
+        font-weight: 700;
+        font-variant: small-caps;
+        font-size: 2rem;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    label {
+        margin: 10px 0;
+        font-weight: 600;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<div class="insert-data-container">
+    <h2 class="form-title">Formulaire pour insérer les données agricoles :</h2>
+    <form method="post" action="{% url 'inserer_donnees' %}" onsubmit="return validerFormulaire()">
+        {% csrf_token %}
+
+        <label for="id_nom">Nom :</label>
+        <input type="text" id="id_nom" name="nom">
+
+        <label for="id_email">Email :</label>
+        <input type="email" id="id_email" name="email">
+
+        <label for="id_region">Région :</label>
+        <select id="id_region" name="region">
+            <option value="Hodh Chargui">Hodh Chargui</option>
+            <option value="Hodh El Gharbi">Hodh El Gharbi</option>
+            <option value="Assaba">Assaba</option>
+            <option value="Gorgol">Gorgol</option>
+            <option value="Brakna">Brakna</option>
+            <option value="Trarza">Trarza</option>
+            <option value="Adrar">Adrar</option>
+            <option value="Dakhlet Nouadhibou">Dakhlet Nouadhibou</option>
+            <option value="Tagant">Tagant</option>
+            <option value="Guidimakha">Guidimakha</option>
+            <option value="Tiris Zemmour">Tiris Zemmour</option>
+            <option value="Inchiri">Inchiri</option>
+            <option value="Nouakchott">Nouakchott</option>
+        </select>
+
+        <label for="id_temperature">Température :</label>
+        <input type="number" id="id_temperature" name="temperature">
+
+        <label for="id_humidite">Humidité :</label>
+        <input type="number" id="id_humidite" name="humidite">
+
+        <label for="id_superficie">Superficie :</label>
+        <input type="number" id="id_superficie" name="superficie">
+
+        <label for="id_capital">Capital :</label>
+        <input type="number" id="id_capital" name="capital">
+
+        <label for="id_qualite_sol">Qualité du sol :</label>
+        <input type="text" id="id_qualite_sol" name="qualite_sol">
+
+         
+
+        <label for="id_produit">Produit :</label>
+        <input type="text" id="id_produit" name="produit">
+
+        <label for="id_prix_produit">Prix du produit :</label>
+        <input type="number" id="id_prix_produit" name="prix_produit">
+
+        <button type="submit">Soumettre</button>
+    </form>
+</div>
+{% endblock %}
